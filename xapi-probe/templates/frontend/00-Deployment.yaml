@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-server
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: frontend
+    component: content-server
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+      microservice: frontend
+      component: content-server
+ 
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+        microservice: frontend
+        component: content-server
+
+    spec:  # type: V1PodSpec
+      containers:
+      - name: content-server
+        
+        image: yeldir/st3k101-frontend
+        imagePullPolicy: Always
+
+        stdin: true
+        tty: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+
+      dnsPolicy: ClusterFirst
+
+      restartPolicy: always
+      terminationGracePeriodSeconds: 30

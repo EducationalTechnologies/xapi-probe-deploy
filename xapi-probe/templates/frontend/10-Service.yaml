@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: frontend
+    component: content-server
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: frontend
+    component: content-server
+  type: ClusterIP
+  ports:
+  - name: content-server
+    protocol: TCP
+    port: 80
