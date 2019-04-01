@@ -126,19 +126,7 @@ spec:
         - name: XAPI_MAX_RETRIES
           value: {{ .Values.backend.xapi.maxRetries }}
 
-        volumeMounts:
-        - mountPath: /flask
-          name: flask-config
-
       dnsPolicy: ClusterFirst
 
       restartPolicy: always
-      terminationGracePeriodSeconds: 60
-
-      volumes:
-      - name: flask-config
-        configMap:
-          name: flask-config
-          items:
-          - key: config
-            path: "flask.cfg"
+      terminationGracePeriodSeconds: 30
