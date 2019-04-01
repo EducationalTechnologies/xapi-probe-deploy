@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-service
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: backend
+    component: database
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: backend
+    component: database
+  type: ClusterIP
+  ports:
+  - name: postgres-service
+    protocol: TCP
+    port: 3306

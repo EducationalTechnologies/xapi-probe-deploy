@@ -1,0 +1,7 @@
+backend:
+  database:
+    size: 4Gi
+    storageClassName: ceph-block-production
+    user: flask
+    password: kksrk0vv3zigez6
+    name: st3k101
