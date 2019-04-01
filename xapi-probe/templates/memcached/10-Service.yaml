@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: memcached
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: backend
+    component: session-cache
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: backend
+    component: session-cache
+  type: ClusterIP
+  ports:
+  - name: session-cache
+    protocol: TCP
+    port: 11211
