@@ -28,3 +28,8 @@ backend:
     defaultEndpoint: "tla.edutec.guru"
     lostLog: xapi-lost.log
     maxRetries: 5
+xapi-publisher:
+  database:
+    version: 4.1
+    size: 1Gi
+    storageClassName: ceph-block-production

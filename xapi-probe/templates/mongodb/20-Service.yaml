@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongo  # hard coded in xapi-publisher, hence inconsistent naming TODO
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: database
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: database
+  type: ClusterIP
+  ports:
+  - name: mongodb-service
+    protocol: TCP
+    port: 27017
