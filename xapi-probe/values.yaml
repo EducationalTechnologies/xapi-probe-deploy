@@ -33,3 +33,7 @@ xapi-publisher:
     version: 4.1
     size: 1Gi
     storageClassName: ceph-block-production
+  messageBroker:
+    version: latest
+    size: 1Gi
+    storageClassName: ceph-block-production

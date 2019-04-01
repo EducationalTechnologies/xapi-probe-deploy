@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: message-broker
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: message-broker
+  type: ClusterIP
+  ports:
+  - name: redis-service
+    protocol: TCP
+    port: 6379
