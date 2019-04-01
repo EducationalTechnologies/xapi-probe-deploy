@@ -1,3 +1,4 @@
+host: "survey.cloud.edutec.guru"
 backend:
   database:
     size: 4Gi
@@ -5,3 +6,25 @@ backend:
     user: flask
     password: kksrk0vv3zigez6
     name: st3k101
+  tla:
+    endpoint: "https://tlacx311.edutec.guru/lrs-backend/resources/systems/xapi/statements"
+    user: someuser
+    password: somepassword
+  smtp:
+    fromAddress: some@email.invalid
+    password: somepassword
+    server: smtp.someserver.invalid
+    port: 587
+    tls: true
+  locale:
+    timezone: "Europe/Berlin"
+    language: en
+  debug:
+    enabled: true
+    spoofLocation: true
+  monitoring:
+    emailAddress: "someone@noemail.invalid"
+  xapi:
+    defaultEndpoint: "tla.edutec.guru"
+    lostLog: xapi-lost.log
+    maxRetries: 5
