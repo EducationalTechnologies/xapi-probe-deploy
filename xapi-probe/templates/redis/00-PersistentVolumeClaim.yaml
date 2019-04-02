@@ -14,5 +14,5 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.xapi-publisher.message-broker.size }}
-  storageClassName: {{ .Values.xapi-publisher.message-broker.storageClassName }}
+      storage: {{ .Values.xapiPublisher.messageBroker.size }}
+  storageClassName: {{ .Values.xapiPublisher.messageBroker.storageClassName }}
