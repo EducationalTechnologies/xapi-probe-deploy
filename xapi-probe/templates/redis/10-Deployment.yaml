@@ -37,7 +37,7 @@ spec:
       containers:
       - name: redis
         
-        image: "redis:{{ .Values.xapi-publisher.messageBroker.version }}"
+        image: "redis:{{ .Values.xapiPublisher.messageBroker.version }}"
         imagePullPolicy: Always
 
         stdin: true
