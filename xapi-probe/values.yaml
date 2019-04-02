@@ -30,7 +30,7 @@ backend:
     defaultEndpoint: "tla.edutec.guru"
     lostLog: xapi-lost.log
     maxRetries: 5
-xapi-publisher:
+xapiPublisher:
   database:
     version: 4.1
     size: 1Gi
