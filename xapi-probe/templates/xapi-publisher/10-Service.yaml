@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: xapi-publisher
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: api-server
+  annotations:
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  selector:
+    app: {{ .Release.Name }}
+    microservice: xapi-publisher
+    component: api-server
+  type: ClusterIP
+  ports:
+  - name: xapi-publisher
+    protocol: TCP
+    port: 80
