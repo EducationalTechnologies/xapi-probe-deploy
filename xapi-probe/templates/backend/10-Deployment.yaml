@@ -47,15 +47,15 @@ spec:
 
         env:
         - name: LANGUAGE
-          value: {{ .Values.backend.locale.language }}
+          value: {{ quote .Values.backend.locale.language }}
         - name: TIMEZONE
-          value: {{ .Values.backend.locale.timezone }}
+          value: {{ quote .Values.backend.locale.timezone }}
         - name: DOMAIN_NAME
-          value: "https://{{ .Values.host }}"
+          value: {{ list "https://" .Values.host | join "" }}
         - name: ADMIN_EMAIL
-          value: {{ .Values.backend.monitoring.emailAddress }}
+          value: {{ quote .Values.backend.monitoring.emailAddress }}
         - name: XAPI_DEFAULT_ENDPOINT
-          value: {{ .Values.backend.xapi.defaultEndpoint }}
+          value: {{ quote .Values.backend.xapi.defaultEndpoint }}
 
         - name: TLA_XAPI_ENDPOINT
           valueFrom:
@@ -100,18 +100,18 @@ spec:
               key: SMTP_USE_STARTTLS
 
         - name: DEBUG
-          value: {{ .Values.backend.debug.enabled }}
+          value: {{ quote .Values.backend.debug.enabled }}
         - name: DEBUG_SPOOF_LOCATION
-          value: {{ .Values.backend.debug.spoofLocation }}
+          value: {{ quote .Values.backend.debug.spoofLocation }}
 
         - name: AUTH_SESSION_TOKEN_LENGTH
-          value: 64
+          value: "64"
         - name: AUTH_SALT_LENGTH
-          value: 64
+          value: "64"
         - name: AUTH_REQUEST_TTL
-          value: 1800
+          value: "1800"
         - name: VERIFICATION_HASH_LENGTH
-          value: 16
+          value: "16"
 
         - name: SQLALCHEMY_DATABASE_URI
           valueFrom:
@@ -122,9 +122,9 @@ spec:
         - name: SURVEY_TEMPLATE_PATH
           value: "/app/templates/questionnaire"
         - name: XAPI_LOST_LOG
-          value: "{{ .Values.backend.xapi.lostLog }}"
+          value: {{ quote .Values.backend.xapi.lostLog }}
         - name: XAPI_MAX_RETRIES
-          value: {{ .Values.backend.xapi.maxRetries }}
+          value: {{ quote .Values.backend.xapi.maxRetries }}
 
       dnsPolicy: ClusterFirst
 
