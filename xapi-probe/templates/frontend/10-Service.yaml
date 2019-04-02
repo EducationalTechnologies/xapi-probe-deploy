@@ -16,6 +16,6 @@ spec:
     component: content-server
   type: ClusterIP
   ports:
-  - name: content-server
+  - name: frontend
     protocol: TCP
     port: 80

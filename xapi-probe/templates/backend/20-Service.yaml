@@ -16,6 +16,6 @@ spec:
     component: api-server
   type: ClusterIP
   ports:
-  - name: api-server
+  - name: backend
     protocol: TCP
     port: 80
