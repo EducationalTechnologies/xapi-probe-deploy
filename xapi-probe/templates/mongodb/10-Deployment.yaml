@@ -37,7 +37,7 @@ spec:
       containers:
       - name: mongodb
         
-        image: "mongo:{{ .Values.xapi-publisher.database.version }}"
+        image: "mongo:{{ .Values.xapiPublisher.database.version }}"
         imagePullPolicy: Always
 
         stdin: true

@@ -14,5 +14,5 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: {{ .Values.xapi-publisher.database.size }}
-  storageClassName: {{ .Values.xapi-publisher.database.storageClassName }}
+      storage: {{ .Values.xapiPublisher.database.size }}
+  storageClassName: {{ .Values.xapiPublisher.database.storageClassName }}
