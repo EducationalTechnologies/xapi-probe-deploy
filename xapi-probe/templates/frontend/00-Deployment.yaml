@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: content-server
+  name: frontend
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ .Release.Name }}
@@ -35,7 +35,7 @@ spec:
 
     spec:  # type: V1PodSpec
       containers:
-      - name: content-server
+      - name: frontend
         
         image: yeldir/st3k101-frontend
         imagePullPolicy: Always
