@@ -126,6 +126,15 @@ spec:
         - name: XAPI_MAX_RETRIES
           value: {{ quote .Values.backend.xapi.maxRetries }}
 
+      initContainers:
+      - name: init-wait-until-postgres-available
+        image: busybox
+        command: ["sh", "-c", "until nslookup postgres; do echo 'waiting for Service postgres'; sleep 2; done;"]
+
+      - name: init-wait-unil-postgres-accepts
+        image: busybox
+        command: ["sh", "-c", "until nc -z postgres 5432; do echo 'waiting for postgres to accept connection'; sleep 2; done;"]
+
       dnsPolicy: ClusterFirst
 
       restartPolicy: Always
