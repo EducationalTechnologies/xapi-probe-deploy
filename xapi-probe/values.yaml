@@ -1,4 +1,6 @@
 host: "survey.cloud.edutec.guru"
+tls:
+  secretName: ""
 backend:
   database:
     size: 4Gi
