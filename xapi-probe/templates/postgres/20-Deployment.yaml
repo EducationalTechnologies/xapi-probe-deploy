@@ -65,7 +65,7 @@ spec:
 
       dnsPolicy: ClusterFirst
 
-      restartPolicy: always
+      restartPolicy: Always
       terminationGracePeriodSeconds: 60
 
       volumes:

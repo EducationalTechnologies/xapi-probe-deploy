@@ -47,5 +47,5 @@ spec:
 
       dnsPolicy: ClusterFirst
 
-      restartPolicy: always
+      restartPolicy: Always
       terminationGracePeriodSeconds: 30
